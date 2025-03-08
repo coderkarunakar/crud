@@ -55,3 +55,35 @@ export const getOne = async(req,res)=>{
         res.status(500).json({error: error});
     }
 }
+
+export const update = async(req,res) => {
+    try{
+        const id = req.params.id;
+        //for updating
+        const userExist = await User.findById(id);
+        if(!userExist){
+            return res.status(401).json({msg:"User not found"});
+        }
+        //first pasing id, next user data which comes from  req.body, and pasing an object for making it to true , this below line returns the updated data,
+        //here passing body because we need to pass what ever the details we want to pass
+        const updateData = await User.findByIdAndUpdate(id, req.body, {new:true});
+        res.status(200).json(updateData);
+    }catch(error){
+        res.status(500).json({error: error});
+    }
+}
+
+export const deleteById = async(req,res) => {
+    try{
+        const id = req.params.id;
+        const userExist = await User.findById(id);
+        if(!userExist){
+            return res.status(401).json({msg:"user not found"});
+        }
+        //here no need of passing body just id is enough
+        const deleteData = await User.findByIdAndDelete(id);
+        res.status(200).json({msg:"user deleted Successfully"});
+    }catch(error){
+        res.status(500).json({error:error});
+    }
+}

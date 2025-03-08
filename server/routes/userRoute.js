@@ -1,5 +1,5 @@
 import express from "express";
-import { create,getAll, getOne } from "../controller/userController.js";
+import { create,getAll, getOne,update,deleteById } from "../controller/userController.js";
 //initializing  a router from express
 const route = express.Router();
 
@@ -8,4 +8,8 @@ const route = express.Router();
 route.post("/create", create);
 route.get("/getall",getAll);
 route.get("/getallbyId/:id",getOne);
+//for updating
+route.put("/update/:id",update);
+//for deleting
+route.delete("/delete/:id",deleteById);
 export  default route;
