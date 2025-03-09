@@ -1,11 +1,12 @@
 import React from 'react';
+import "./user.css";
 import { Link } from 'react-router-dom';
 
 
 const User = () => {
     return(
         <div className='userTable'>
-            <Link to = {"/add"}>Add User</Link>
+            <Link to = {"/add"} className='addButton'>Add User</Link>
             <table border={1} cellPadding={10} cellSpacing={0}>
                 <thead>
                     <tr>
@@ -21,9 +22,15 @@ const User = () => {
                         <td>1.</td>
                         <td>Karunakar</td>
                         <td>Karunakar@gmail.com</td>
-                        <td><button>Delete</button></td>
-                        {/* adding a link to move to edit page */}
-                        <Link to={'/edit'}>Edit</Link>
+                        <td className='actionButtons'>
+                            <button>
+                                <i className="fa-solid fa-trash"></i> 
+                                </button>
+                           
+                                  <Link to={'/edit'}><i className="fa-solid fa-pen-to-square"></i></Link> 
+                               
+                            </td>
+                       
                     </tr>
                 </tbody>
             </table>
