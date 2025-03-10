@@ -7,14 +7,14 @@ const Add = () => {
             {/* this will make the link to move back */}
         <Link to="/">Back</Link>   
         <h3>Add New User</h3>  
-        <form>
+        <form className="addUserForm">
             <div className="inputGroup">
                 {/* just creating a form */}
                 {/* label is used to describe a form input, htmlfor links it to an input id so clicking label focuses the input */}
                 {/* htmlFor id after clicking it focues on input box */}
                 {/* this autocomplete when we saved previous value like name, email,password it autosugges when we hover on input box if we turn on */}
                 <label htmlFor="fname">First Name</label>
-                <input type="text" id="fname" name="fname" autoComplete="off" placeholder="first Name"></input>
+                <input type="text" id="fname" name="fname" autoComplete="on" placeholder="first Name"></input>
             </div>
             <div className="inputGroup">
                 <label htmlFor="lname">LastName</label>
