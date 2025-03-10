@@ -3,6 +3,8 @@ import "./user.css";
 import { Link } from 'react-router-dom';
 
 
+// our main Screen
+
 const User = () => {
     return(
         <div className='userTable'>
