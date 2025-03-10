@@ -2,6 +2,7 @@
 import './App.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import User from "./components/getuser/User";
+import Add from "./components/adduser/Add";
 
 function App() {
   const route = createBrowserRouter([
@@ -11,7 +12,8 @@ function App() {
     },
     {
       path:"/add",
-      element: "User add page",
+      // just rendering the add component
+      element: <Add/>,
     },
     {
       path:"/edit",
