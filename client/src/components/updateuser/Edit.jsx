@@ -14,15 +14,15 @@ import { Link } from "react-router-dom";
             {/* htmlFor id after clicking it focues on input box */}
             {/* this autocomplete when we saved previous value like name, email,password it autosugges when we hover on input box if we turn on */}
             <label htmlFor="fname">First Name</label>
-            <input type="text" id="fname" name="fname" autoComplete="on" placeholder="first Name"></input>
-        </div>
-        <div className="inputGroup">
-            <label htmlFor="lname">LastName</label>
-            <input type="text" id="fname" name="fname" autoComplete="off" placeholder="LastName"></input>
+            <input type="text"  id="fname" name="fname" autoComplete="on" placeholder="first Name"></input>
+        </div> 
+        <div className="inputGronChange oup">
+            <label htmlFor="lnaonChange me">LastName</label>
+            <input type="text"id="fname" name="fname" autoComplete="off" placeholder="LastName"></input>
         </div>
         <div className="inputGroup">
             <label htmlFor="email">email</label>
-            <input type="email" id="fname" name="fname" autoComplete="off" placeholder="emailName"></input>
+            <input type="email"  id="fname" name="fname" autoComplete="off" placeholder="emailName"></input>
         </div>
         <div className="inputGroup">
         <button type="submit">Update User</button>

@@ -1,32 +1,65 @@
-import React from "react"
+import React, { useState } from "react"
 import "./add.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const Add = () => {
+//hooks first keeping all the object empty
+    const users = {
+        fname : "",
+        lname : "",
+        email: "",
+        password : ""
+    }
+    const [user,setUser] = useState(users);
+
+
+    const inputHandler = (e) => {
+        //e.target gives you what you have typed in the text field
+        const {name, value} = e.target;
+        // console.log("namevaluecheck",name,value);
+        //the below line means what ever the previous data is there keep it astise and the new key,value simply append in the previous object
+        //spread operatior creates a copy of the object
+         setUser({...user, [name]: value});
+        //  console.log(user);
+    }
+
+
+    const submitForm = async(e) => {
+        //stops default behaviour of like page refresh, navigation, form submission
+        e.preventDefault();
+        await axios.post("http://localhost:8000/api/create",user)
+        .then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+        
+    }
     return (
         <div className="addUser">
             {/* this will make the link to move back */}
         <Link to="/">Back</Link>   
         <h3>Add New User</h3>  
-        <form className="addUserForm">
+        <form className="addUserForm" onSubmit={submitForm}>
             <div className="inputGroup">
                 {/* just creating a form */}
                 {/* label is used to describe a form input, htmlfor links it to an input id so clicking label focuses the input */}
                 {/* htmlFor id after clicking it focues on input box */}
                 {/* this autocomplete when we saved previous value like name, email,password it autosugges when we hover on input box if we turn on */}
                 <label htmlFor="fname">First Name</label>
-                <input type="text" id="fname" name="fname" autoComplete="on" placeholder="first Name"></input>
+                <input type="text"  onChange = {inputHandler} id="fname" name="fname" autoComplete="on" placeholder="first Name"></input>
             </div>
             <div className="inputGroup">
                 <label htmlFor="lname">LastName</label>
-                <input type="text" id="fname" name="fname" autoComplete="off" placeholder="LastName"></input>
+                <input type="text" onChange = {inputHandler} id="fname" name="lname" autoComplete="off" placeholder="LastName"></input>
             </div>
             <div className="inputGroup">
                 <label htmlFor="email">email</label>
-                <input type="email" id="fname" name="fname" autoComplete="off" placeholder="emailName"></input>
+                <input type="email"onChange = {inputHandler}  id="fname" name="email" autoComplete="off" placeholder="emailName"></input>
             </div>
             <div className="inputGroup">
                 <label htmlFor="password">password</label>
-                <input type="password" id="fname" name="fname" autoComplete="off" placeholder="password"></input>
+                <input type="password" onChange = {inputHandler} id="fname" name="password" autoComplete="off" placeholder="password"></input>
             </div>
             <div className="inputGroup">
             <button type="submit">Add User</button>
