@@ -15,7 +15,10 @@ export const create = async (req,res) => {
         //here just calling above function and saving the data
         const savedData = await userData.save();
         //now sending the data to response
-        res.status(200).json(savedData);
+        res.status(200).json({
+            msg:"Data saved Successfully",
+            data: savedData
+        });
     }catch(error){
         res.status(500).json({error: error});
     }
@@ -32,7 +35,12 @@ export const getAll = async(req,res) => {
             return res.status(404).json({msg:"User data not found"});
         }
         //now sending data to the response
-        res.status(200).json(userData);
+        res.status(200).json(
+            {
+                msg:"Data saved Successfully",
+                data: userData
+            }
+        );
     }catch(error){
         res.status(500).json({error: error});
     }
@@ -50,7 +58,12 @@ export const getOne = async(req,res)=>{
             if(!userData){
                 return res.status(400).json({msg:"User data not found"});
             }
-            res.status(200).json(userData);
+            res.status(200).json(
+                {
+                    msg:"Data saved Successfully",
+                    data: userData
+                }
+            );
     }catch(error){
         res.status(500).json({error: error});
     }
@@ -67,7 +80,12 @@ export const update = async(req,res) => {
         //first pasing id, next user data which comes from  req.body, and pasing an object for making it to true , this below line returns the updated data,
         //here passing body because we need to pass what ever the details we want to pass
         const updateData = await User.findByIdAndUpdate(id, req.body, {new:true});
-        res.status(200).json(updateData);
+        res.status(200).json(
+            {
+                msg:"Data saved Successfully",
+                data: updateData
+            }
+        );
     }catch(error){
         res.status(500).json({error: error});
     }
@@ -82,7 +100,7 @@ export const deleteById = async(req,res) => {
         }
         //here no need of passing body just id is enough
         const deleteData = await User.findByIdAndDelete(id);
-        res.status(200).json({msg:"user deleted Successfully"});
+        res.status(200).json({msg:"user deleted Successfully",data:deleteData});
     }catch(error){
         res.status(500).json({error:error});
     }
