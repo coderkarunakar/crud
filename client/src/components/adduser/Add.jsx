@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import "./add.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 const Add = () => {
 //hooks first keeping all the object empty
     const users = {
@@ -11,6 +12,7 @@ const Add = () => {
         password : ""
     }
     const [user,setUser] = useState(users);
+    const navigate = useNavigate();
 
 
     const inputHandler = (e) => {
@@ -29,7 +31,10 @@ const Add = () => {
         e.preventDefault();
         await axios.post("http://localhost:8000/api/create",user)
         .then((response) => {
+            toast.success(response.data.msg,{position:"top-right"});
             console.log(response);
+            //after succesful creation it navigates to the home page
+            navigate("/");
         }).catch((error) => {
             console.log(error);
         })
