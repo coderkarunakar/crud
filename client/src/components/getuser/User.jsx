@@ -37,8 +37,8 @@ const [users,setUsers] = useState([]);
                             return(
                        
                     
-                    <tr key={user.id || index}> 
-                        <td>{index}</td>
+                    <tr key={user._id || index}> 
+                        <td>{index+1}</td>
                         <td>{user.fname}{user.lname}</td>
                         <td>{user.email}</td>
                         <td className='actionButtons'>
@@ -46,7 +46,7 @@ const [users,setUsers] = useState([]);
                                 <i className="fa-solid fa-trash"></i> 
                                 </button>
                            
-                                  <Link to={'/edit'}><i className="fa-solid fa-pen-to-square"></i></Link> 
+                                  <Link to={`/edit/` + user._id}><i className="fa-solid fa-pen-to-square"></i></Link> 
                                
                             </td>
                     </tr>
