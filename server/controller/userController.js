@@ -100,7 +100,10 @@ export const deleteById = async(req,res) => {
         }
         //here no need of passing body just id is enough
         const deleteData = await User.findByIdAndDelete(id);
-        res.status(200).json({msg:"user deleted Successfully",data:deleteData});
+        res.status(200).json(
+            {   msg:"user deleted Successfully",
+                data:deleteData}
+        );
     }catch(error){
         res.status(500).json({error:error});
     }

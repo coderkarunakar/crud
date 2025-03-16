@@ -56,15 +56,15 @@ const Add = () => {
             </div>
             <div className="inputGroup">
                 <label htmlFor="lname">LastName</label>
-                <input type="text" onChange = {inputHandler} id="fname" name="lname" autoComplete="off" placeholder="LastName"></input>
+                <input type="text" onChange = {inputHandler} id="lname" name="lname" autoComplete="off" placeholder="LastName"></input>
             </div>
             <div className="inputGroup">
                 <label htmlFor="email">email</label>
-                <input type="email"onChange = {inputHandler}  id="fname" name="email" autoComplete="off" placeholder="emailName"></input>
+                <input type="email"onChange = {inputHandler}  id="email" name="email" autoComplete="off" placeholder="emailName"></input>
             </div>
             <div className="inputGroup">
                 <label htmlFor="password">password</label>
-                <input type="password" onChange = {inputHandler} id="fname" name="password" autoComplete="off" placeholder="password"></input>
+                <input type="password" onChange = {inputHandler} id="password" name="password" autoComplete="off" placeholder="password"></input>
             </div>
             <div className="inputGroup">
             <button type="submit">Add User</button>
